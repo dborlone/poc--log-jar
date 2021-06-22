@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <timestamp key="timestamp" datePattern="yyyyMMdd"/>
+
+    <appender  name="STOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender  name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>out.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+
+    <appender  name="FILE_DIFERENTE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/error_log_${timestamp}.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+<!--
+    <logger name="br.com.borlone.poc.log.teste.Main" level="error" additivity="false">
+        <appender-ref ref="FILE_DIFERENTE" />
+    </logger>
+-->
+    <root level="debug">
+        <appender-ref ref="STOUT" />
+        <appender-ref ref="${FILE_ACTIVE}" />
+    </root>
+</configuration>
